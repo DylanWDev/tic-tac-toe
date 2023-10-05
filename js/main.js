@@ -23,9 +23,12 @@ function makeTiles() {
     tile.classList = "col-4 text-center border";
 
     let btn = document.createElement("button");
+    btn.id = i
     btn.classList = "btn btn-light btn-lg";
     btn.textContent = ".";
     tile.appendChild(btn);
+
+    btn.addEventListener("click", placeCharacter);
 
     gameBoard.appendChild(tile);
   }
@@ -39,6 +42,34 @@ let resetDiv = document.createElement("div");
 
   let resetBtn = document.createElement("button");
   resetBtn.classList = "btn btn-primary mt-5";
+  resetBtn.innerHTML = "RESET"
   resetDiv.appendChild(resetBtn);
 
 // Call the functions
+
+let currentPlayer = "X"
+
+function placeCharacter(e) {
+  // Get the button that was clicked
+  let btn = e.target;
+
+  // Check if the button already contains "X" or "O"
+  if (btn.textContent !== "X" && btn.textContent !== "O") {
+    btn.textContent = currentPlayer; // Fill with "X" if empty
+
+    currentPlayer = currentPlayer === "X" ? "O" : "X"
+  }
+  
+}
+
+
+winConditionArr =  [
+    [0,3,6]
+    [1,4,7]
+    [2,5,8]
+    [0,1,2]
+    [3,4,5]
+    [6,7,8]
+    [0,4,8]
+    [6,4,2]
+]
