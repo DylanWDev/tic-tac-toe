@@ -47,7 +47,7 @@ let resetDiv = document.createElement("div");
 
 // Call the functions
 
-
+let currentPlayer = "X"
 
 function placeCharacter(e) {
   // Get the button that was clicked
@@ -55,9 +55,21 @@ function placeCharacter(e) {
 
   // Check if the button already contains "X" or "O"
   if (btn.textContent !== "X" && btn.textContent !== "O") {
-    btn.textContent = "X"; // Fill with "X" if empty
+    btn.textContent = currentPlayer; // Fill with "X" if empty
+
+    currentPlayer = currentPlayer === "X" ? "O" : "X"
   }
-  if (btn.textContent == "X" && btn.textContent == "O") {
-    btn.textContent = "O"; // Fill with "X" if empty
-  }
+  
 }
+
+
+winConditionArr =  [
+    [0,3,6]
+    [1,4,7]
+    [2,5,8]
+    [0,1,2]
+    [3,4,5]
+    [6,7,8]
+    [0,4,8]
+    [6,4,2]
+]
