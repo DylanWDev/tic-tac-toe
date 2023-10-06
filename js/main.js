@@ -113,7 +113,7 @@ function placeCharacter(e) {
 
 let currentPlayer = "X"
 
-<<<<<<< HEAD
+`<<<<<<<` HEAD
 
 function placeCharacter(e) {
     let btn = e.target;
