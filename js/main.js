@@ -47,21 +47,28 @@ let resetDiv = document.createElement("div");
 
 // Call the functions
 
-let currentPlayer = "X"
+let currentPlayerDisplay = document.createElement("div");
+currentPlayerDisplay.id = "currentPlayerDisplay";
+gameBoard.appendChild(currentPlayerDisplay);
+
+function displayCurrentPlayer() { // adds current players turn to the screen using string literal
+  currentPlayerDisplay.textContent = `Current Player: ${currentPlayer}`;
+}
+
 
 function placeCharacter(e) {
   // Get the button that was clicked
   let btn = e.target;
-
-  // Check if the button already contains "X" or "O"
-  if (btn.textContent !== "X" && btn.textContent !== "O") {
-    btn.textContent = currentPlayer; // Fill with "X" if empty
-
-    currentPlayer = currentPlayer === "X" ? "O" : "X"
-  }
   
+  // checks for x and o in button
+  if (btn.textContent !== "X" && btn.textContent !== "O") {
+    btn.textContent = currentPlayer; // fills with x if button is empty
+    
+    currentPlayer = currentPlayer === "X" ? "O" : "X"
+  }displayCurrentPlayer()
 }
 
+let currentPlayer = "X"
 
 winConditionArr =  [
     [0,3,6]
@@ -73,3 +80,5 @@ winConditionArr =  [
     [0,4,8]
     [6,4,2]
 ]
+
+
