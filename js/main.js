@@ -49,27 +49,76 @@ let resetDiv = document.createElement("div");
 
 let currentPlayer = "X"
 
-function placeCharacter(e) {
-  // Get the button that was clicked
-  let btn = e.target;
+let playerX = []
+let playerO = []
 
-  // Check if the button already contains "X" or "O"
-  if (btn.textContent !== "X" && btn.textContent !== "O") {
-    btn.textContent = currentPlayer; // Fill with "X" if empty
+winConditionArr =  [
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,4,8],
+    [6,4,2],
+];
 
-    currentPlayer = currentPlayer === "X" ? "O" : "X"
-  }
-  
+    function winCondition(){
+        let player1 = false;
+        let player2 = false;
+        for (let i = 0; i < 8; i++) {
+            let winCombo = winConditionArr[i];
+            
+            for (let j = 0; j < winCombo.length; j++) {
+                if (playerX.includes(winCombo[j])) {
+                    player1 = true;
+                    break;
+                }
+                if (playerO.includes(winCombo[j])) {
+                    player2 = true;
+                    break;
+                }
+            }
+            
+            
+        }
+        if (player1) {
+            console.log("Player X WON");
+        } else if (player2){
+            console.log("Player O WON");
+        }
+
+    console.log("this is being called");
 }
 
 
-winConditionArr =  [
-    [0,3,6]
-    [1,4,7]
-    [2,5,8]
-    [0,1,2]
-    [3,4,5]
-    [6,7,8]
-    [0,4,8]
-    [6,4,2]
-]
+
+function placeCharacter(e) {
+    let btn = e.target;
+    
+    if (btn.textContent !== "X" && btn.textContent !== "O") {
+        btn.textContent = currentPlayer; 
+        
+        let tileIndex = parseInt(btn.id);
+        boardState[tileIndex] = currentPlayer;
+
+        if (currentPlayer === "X") {
+            playerX.push(tileIndex);
+        } else {
+            playerO.push(tileIndex);
+        }
+
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+    }console.log(playerX, playerO)
+    winCondition()
+}
+
+
+
+let boardState = ["", "", "", "", "", "", "", "", ""];
+
+resetBtn.addEventListener("click", resetBoard);
+
+function resetBoard(){
+    window.location.reload()
+}
