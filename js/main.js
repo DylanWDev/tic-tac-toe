@@ -56,6 +56,48 @@ function displayCurrentPlayer() { // adds current players turn to the screen usi
 }
 
 
+<<<<<<< HEAD
+let playerX = []
+let playerO = []
+
+winConditionArr =  [
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,4,8],
+    [6,4,2],
+];
+
+    function winCondition(){
+        let player1 = false;
+        let player2 = false;
+        for (let i = 0; i < 8; i++) {
+            let winCombo = winConditionArr[i];
+            
+            for (let j = 0; j < winCombo.length; j++) {
+                if (playerX.includes(winCombo[j])) {
+                    player1 = true;
+                    break;
+                }
+                if (playerO.includes(winCombo[j])) {
+                    player2 = true;
+                    break;
+                }
+            }
+            
+            
+        }
+        if (player1) {
+            console.log("Player X WON");
+        } else if (player2){
+            console.log("Player O WON");
+        }
+
+    console.log("this is being called");
+=======
 function placeCharacter(e) {
   // Get the button that was clicked
   let btn = e.target;
@@ -66,10 +108,43 @@ function placeCharacter(e) {
     
     currentPlayer = currentPlayer === "X" ? "O" : "X"
   }displayCurrentPlayer()
+>>>>>>> 8377e69e6c05e4dd7e22b7d1d7a3ffd4041e82f5
 }
 
 let currentPlayer = "X"
 
+<<<<<<< HEAD
+
+function placeCharacter(e) {
+    let btn = e.target;
+    
+    if (btn.textContent !== "X" && btn.textContent !== "O") {
+        btn.textContent = currentPlayer; 
+        
+        let tileIndex = parseInt(btn.id);
+        boardState[tileIndex] = currentPlayer;
+
+        if (currentPlayer === "X") {
+            playerX.push(tileIndex);
+        } else {
+            playerO.push(tileIndex);
+        }
+
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+    }console.log(playerX, playerO)
+    winCondition()
+}
+
+
+
+let boardState = ["", "", "", "", "", "", "", "", ""];
+
+resetBtn.addEventListener("click", resetBoard);
+
+function resetBoard(){
+    window.location.reload()
+}
+=======
 winConditionArr =  [
     [0,3,6]
     [1,4,7]
@@ -82,3 +157,4 @@ winConditionArr =  [
 ]
 
 
+>>>>>>> 8377e69e6c05e4dd7e22b7d1d7a3ffd4041e82f5
