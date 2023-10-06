@@ -47,8 +47,16 @@ let resetDiv = document.createElement("div");
 
 // Call the functions
 
-let currentPlayer = "X"
+let currentPlayerDisplay = document.createElement("div");
+currentPlayerDisplay.id = "currentPlayerDisplay";
+gameBoard.appendChild(currentPlayerDisplay);
 
+function displayCurrentPlayer() { // adds current players turn to the screen using string literal
+  currentPlayerDisplay.textContent = `Current Player: ${currentPlayer}`;
+}
+
+
+<<<<<<< HEAD
 let playerX = []
 let playerO = []
 
@@ -89,9 +97,23 @@ winConditionArr =  [
         }
 
     console.log("this is being called");
+=======
+function placeCharacter(e) {
+  // Get the button that was clicked
+  let btn = e.target;
+  
+  // checks for x and o in button
+  if (btn.textContent !== "X" && btn.textContent !== "O") {
+    btn.textContent = currentPlayer; // fills with x if button is empty
+    
+    currentPlayer = currentPlayer === "X" ? "O" : "X"
+  }displayCurrentPlayer()
+>>>>>>> 8377e69e6c05e4dd7e22b7d1d7a3ffd4041e82f5
 }
 
+let currentPlayer = "X"
 
+<<<<<<< HEAD
 
 function placeCharacter(e) {
     let btn = e.target;
@@ -122,3 +144,17 @@ resetBtn.addEventListener("click", resetBoard);
 function resetBoard(){
     window.location.reload()
 }
+=======
+winConditionArr =  [
+    [0,3,6]
+    [1,4,7]
+    [2,5,8]
+    [0,1,2]
+    [3,4,5]
+    [6,7,8]
+    [0,4,8]
+    [6,4,2]
+]
+
+
+>>>>>>> 8377e69e6c05e4dd7e22b7d1d7a3ffd4041e82f5
